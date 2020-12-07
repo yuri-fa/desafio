@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<div class="title">
+			<h1>CATALOGO</h1>
+		</div>
+		<hr />
+		<h:form id="mainContent" acceptcharset="utf-8"  enctype="multipart/form-data">
+			<p:outputPanel id="panel" styleClass="ui-g-12">
+				<p:repeat var="estado" value="#{catalogoMB.estados}">
+					<p:panel styleClass="ui-g-4 input" header="#{estado.nome}">
+						<p:panelGrid columns="2">
+							 <f:facet name="header">
+								<img style="max-width: 180px;" src="#{facesContext.externalContext.requestContextPath}/resources/gfx/#{estado.image}" />
+						    </f:facet>
+						    <p:column>População</p:column>
+							<p:column> #{estado.populacao}</p:column>
+						</p:panelGrid>
+						<hr/>
+						<p:repeat var="cidade" value="#{estado.cidades}">
+							<p:panelGrid columns="2" style="margin-bottom: 10px;">
+							    <p:column>Nome</p:column>
+								<p:column> #{cidade.nome}</p:column>
+								<p:column>População</p:column>
+								<p:column> #{cidade.populacao}</p:column>
+							</p:panelGrid>
+						</p:repeat>
+					</p:panel>
+				</p:repeat>
+			</p:outputPanel>
+		</h:form>
+	</ui:define>
+</ui:composition>
