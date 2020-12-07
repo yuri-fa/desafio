@@ -12,50 +12,53 @@
 		</div>
 
 		<hr />
+		<p:outputPanel id="panel" styleClass="ui-g-12">
+			<p:outputPanel class="ui-g-5">
 
-		<h:form id="mainContent" acceptcharset="utf-8"  enctype="multipart/form-data">
-			<p:outputPanel id="panel" styleClass="ui-g-12">
-
-				<p:outputPanel class="ui-g-5">
-
-					<p:outputPanel styleClass="ui-g-6 input" style="margin-left: 29px;">
-						<p:outputLabel value="Estado" />
-						<p:selectOneMenu id="selecaoEstado" style="width: 100%" value="#{cadastroMB.estado}">
-							<f:selectItems value="#{cadastroMB.estados}" var="temp"
-								itemLabel="#{temp.nome}" itemValue="#{temp.nome}" />
-							<p:ajax event="itemSelect" listener="#{cadastroMB.atualizarEstado()}" process="@this">
-								<f:setPropertyActionListener target="#{cadastroMB.estado}" value="#{temp.nome}" />
-							</p:ajax>
-						</p:selectOneMenu>
-					</p:outputPanel>
-
-					<div id="imageEstado" class="ui-g-10" style="margin-left: 18px;">
-						<img style="max-width: 180px;" src="#{facesContext.externalContext.requestContextPath}/resources/gfx/#{cadastroMB.estadoSelecionado.image}" />
-					</div>
-
+				<p:outputPanel styleClass="ui-g-6 input" style="margin-left: 29px;">
+					<p:outputLabel value="Estado" />
+					<p:selectOneMenu id="selecaoEstado" style="width: 100%"
+						value="#{cadastroMB.estado}">
+						<f:selectItems value="#{cadastroMB.estados}" var="temp"
+							itemLabel="#{temp.nome}" itemValue="#{temp.nome}" />
+						<p:ajax event="itemSelect"
+							listener="#{cadastroMB.atualizarEstado()}" process="@this">
+							<f:setPropertyActionListener target="#{cadastroMB.estado}"
+								value="#{temp.nome}" />
+						</p:ajax>
+					</p:selectOneMenu>
 				</p:outputPanel>
 
-				<p:outputPanel id="cidades" styleClass="ui-g-6" style="margin-left: 20px;">
-					<p:panel header="Cadastro de Cidade" styleClass="ui-g-5">
-						<div class="ui-g-12 input">
-							<p:outputLabel value="Id"/>
-							<p:inputText disabled="true" value="#{cadastroMB.cidadeSelecionada.id}"/>
-						</div>
-						<div class="ui-g-12 input" id="nomeCidade">
-							<p:outputLabel value="Nome"/>
-							<p:inputText value="#{cadastroMB.cidadeSelecionada.nome}"/>
-						</div>
-						<div class="ui-g-12 input" id="populacaoCidade">
-							<p:outputLabel value="População"/>
-							<p:inputText value="#{cadastroMB.cidadeSelecionada.populacao}">
-								<p:keyFilter mask="pint"/>
-							</p:inputText>
-						</div>
-						<p:commandButton process="@form" value="Salvar" action="#{cadastroMB.salvarCidade()}"/>
-					</p:panel>
-				</p:outputPanel>
+				<div id="imageEstado" class="ui-g-10" style="margin-left: 18px;">
+					<img style="max-width: 180px;"
+						src="#{facesContext.externalContext.requestContextPath}/resources/gfx/#{cadastroMB.estadoSelecionado.image}" />
+				</div>
+
 			</p:outputPanel>
-		</h:form>
+
+			<p:outputPanel id="cidades" styleClass="ui-g-6"
+				style="margin-left: 20px;">
+				<p:panel header="Cadastro de Cidade" styleClass="ui-g-5">
+					<div class="ui-g-12 input">
+						<p:outputLabel value="Id" />
+						<p:inputText disabled="true"
+							value="#{cadastroMB.cidadeSelecionada.id}" />
+					</div>
+					<div class="ui-g-12 input" id="nomeCidade">
+						<p:outputLabel value="Nome" />
+						<p:inputText value="#{cadastroMB.cidadeSelecionada.nome}" />
+					</div>
+					<div class="ui-g-12 input" id="populacaoCidade">
+						<p:outputLabel value="População" />
+						<p:inputText value="#{cadastroMB.cidadeSelecionada.populacao}">
+							<p:keyFilter mask="pint" />
+						</p:inputText>
+					</div>
+					<p:commandButton process="@form" value="Salvar"
+						action="#{cadastroMB.salvarCidade()}" />
+				</p:panel>
+			</p:outputPanel>
+		</p:outputPanel>
 
 	</ui:define>
 </ui:composition>

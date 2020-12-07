@@ -14,10 +14,9 @@
 		<ui:include src="/components/header.xhtml" />
 
 			<p:growl id="growl" showDetail="true" showSummary="false" autoUpdate="true" /> 
-<!-- 			<div id="content"> -->
+			<h:form id="mainContent" acceptcharset="utf-8"  enctype="multipart/form-data">
 				<ui:insert name="content" />
-<!-- 			</div> -->
-
+			</h:form>
 		<div id="footer">
 			<ui:include src="/components/footer.xhtml" />
 		</div>
